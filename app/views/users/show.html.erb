@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @user.name %>
+</p>
+
+<p>
+  <b>Lastname:</b>
+  <%= @user.lastname %>
+</p>
+
+<p>
+  <b>Card:</b>
+  <%= @user.card %>
+</p>
+
+<table>
+	<% @user.products.each do |product| %>
+		<tr>
+			<td><%= product.description  %></td>
+			<td><%= product.price %></td>
+			
+		</tr>
+	<% end %>
+	
+	<tr>
+	<td>Total</td>
+	<td>  <%= @user.products.sum(:price) %> </td>
+	</tr>
+	
+</table>
+
+<%= link_to 'Add Product', add_product_user_path(@user) %>
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
